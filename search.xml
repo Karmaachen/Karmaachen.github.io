@@ -248,13 +248,6 @@
       </tags>
   </entry>
   <entry>
-    <title>第一篇博客</title>
-    <url>/2024/06/hello-world/</url>
-    <content><![CDATA[<p>本博客于2024年6月30日下午搭建，用来记录本人学习过程和分享等···<br>还没想好写点啥，先占个坑吧<br>使用<a href="https://hexo.io/">hexo</a>搭建，主题为<a href="https://github.com/iissnan/hexo-theme-next">butterfly</a></p>
-<p>这里顺便写写博客美化计划吧：<br>1.加图床（优先）（需要插件？？）<br>2.归档分类<br>3、···头像啥的杂项 (7.4：都弄好了,顺便测试给这个post加一个随机封面)</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Windows用户名从中文换成英文的过程以及后遗症记录</title>
     <url>/2024/07/Windows%E7%94%A8%E6%88%B7%E5%90%8D%E4%BB%8E%E4%B8%AD%E6%96%87%E6%8D%A2%E6%88%90%E8%8B%B1%E6%96%87%E7%9A%84%E8%BF%87%E7%A8%8B%E4%BB%A5%E5%8F%8A%E5%90%8E%E9%81%97%E7%97%87%E8%AE%B0%E5%BD%95/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>“不要起中文用户名”，这应该是每个新电脑给用户的提示！</p>
@@ -275,6 +268,13 @@
         <tag>Windows</tag>
         <tag>分享</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>第一篇博客</title>
+    <url>/2024/06/hello-world/</url>
+    <content><![CDATA[<p>本博客于2024年6月30日下午搭建，用来记录本人学习过程和分享等···<br>还没想好写点啥，先占个坑吧<br>使用<a href="https://hexo.io/">hexo</a>搭建，主题为<a href="https://github.com/iissnan/hexo-theme-next">butterfly</a></p>
+<p>这里顺便写写博客美化计划吧：<br>1.加图床（优先）（需要插件？？）<br>2.归档分类<br>3、···头像啥的杂项 (7.4：都弄好了,顺便测试给这个post加一个随机封面)</p>
+]]></content>
   </entry>
   <entry>
     <title>个人博客技术栈总结（持续更新）</title>
