@@ -1,0 +1,2469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .page {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        .active {
+            display: block;
+            opacity: 1;
+        }
+        .switch-btn {
+            padding: 12px 24px;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- (首页开始) -->
+    <div id="page1" class="page active">
+        <h1>欢迎来到首页</h1>
+      <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海上交通强国历程</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f0f5f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            background-color: #0077b6;
+            color: white;
+            padding: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.2em;
+        }
+        
+        h2 {
+            color: #0077b6;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        .quiz-section, .timeline-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .draggable-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .draggable-item {
+            background-color: #e6f2f8;
+            border: 2px solid #0077b6;
+            border-radius: 6px;
+            padding: 15px;
+            width: calc(33.33% - 15px);
+            min-width: 200px;
+            text-align: center;
+            cursor: move;
+            transition: all 0.3s ease;
+        }
+        
+        .draggable-item:hover {
+            background-color: #cce5ff;
+            transform: translateY(-3px);
+        }
+        
+        .drop-area {
+            background-color: #f0f8ff;
+            border: 2px dashed #0077b6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            min-height: 150px;
+            transition: all 0.3s ease;
+        }
+        
+        .drop-area.highlight {
+            background-color: #e0f0ff;
+            border-color: #005699;
+        }
+        
+        button {
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        button:hover {
+            background-color: #0066a1;
+        }
+        
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .answer-container {
+            background-color: #f0f8ff;
+            border: 2px dashed #0077b6;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 25px;
+            min-height: 150px;
+            transition: all 0.3s ease;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .correct-answer {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e0f0ff;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .correct-answer h3 {
+            margin-bottom: 10px;
+            color: #0077b6;
+        }
+        
+        .correct-answer-text {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .timeline-container {
+            margin-top: 20px;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #0077b6;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 15px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid #0077b6;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -17px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -17px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: #0077b6;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .btn-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 15px;
+            }
+            
+            .timeline-item:nth-child(odd)::after {
+                right: auto;
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>海上交通强国历程</h1>
+        </header>
+        
+        <section class="quiz-section" id="quiz-section">
+            <h2>排序题：请按照时间先后顺序排列以下海上交通强国的重大事件</h2>
+            
+            <div class="draggable-container" id="draggable-container">
+                <div class="draggable-item" data-value="1">秦汉时期开辟通往罗马帝国的海上航线</div>
+                <div class="draggable-item" data-value="2">隋唐时期海上丝绸之路贸易兴盛</div>
+                <div class="draggable-item" data-value="3">宋元时期指南针应用于海船，推动远洋航行</div>
+                <div class="draggable-item" data-value="4">郑和在明朝永乐至宣德年间七下西洋，远航西太平洋和印度洋</div>
+                <div class="draggable-item" data-value="5">2019 年中共中央、国务院印发《交通强国建设纲要》</div>
+                <div class="draggable-item" data-value="6">2021 年我国首艘自主航行集装箱商船 "智飞" 号投入运营</div>
+            </div>
+            
+            <div class="answer-container" id="answer-container">
+                <p>请将事件拖移到此区域进行排序</p>
+            </div>
+            
+            <button id="submit-btn">提交答案</button>
+            
+            <div class="result" id="result"></div>
+            
+            <div class="correct-answer" id="correct-answer" style="display: none;">
+                <h3>正确答案：</h3>
+                <div class="correct-answer-text" id="correct-answer-text"></div>
+            </div>
+        </section>
+        
+        <div class="btn-container" id="quiz-btn-container">
+            <button id="next-page-btn">下一页</button>
+        </div>
+        
+        <section class="timeline-section" id="timeline-section" style="display: none;">
+            <h2>海上交通强国时间长廊</h2>
+            <div class="timeline-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <img src="https://images.unsplash.com/photo-1560964626-2613517?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="秦汉时期开辟通往罗马帝国的海上航线" class="timeline-image">
+                            <div class="timeline-year">公元前2世纪 - 3世纪</div>
+                            <h3>秦汉时期：海上丝绸之路的开端</h3>
+                            <p>秦汉时期，中国开辟了通往罗马帝国的海上航线，这是古代海上丝绸之路的开端。这条航线促进了中国与南亚、西亚乃至欧洲的贸易往来，输出丝绸、瓷器等特产，同时引进香料、宝石等珍稀物品。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <img src="https://images.unsplash.com/photo-1577512181451-35110fd534df?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="隋唐时期海上丝绸之路贸易兴盛" class="timeline-image">
+                            <div class="timeline-year">6世纪 - 10世纪</div>
+                            <h3>隋唐时期：海上丝绸之路的兴盛</h3>
+                            <p>隋唐时期，海上丝绸之路贸易兴盛，广州成为当时世界上最重要的贸易港口之一。唐朝政府设立市舶司管理海外贸易，中国与东南亚、南亚、阿拉伯地区的海上往来频繁，海上贸易规模和范围都超过了陆上丝绸之路。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <img src="https://images.unsplash.com/photo-1548012384-e0b20d5666e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="宋元时期指南针应用于海船" class="timeline-image">
+                            <div class="timeline-year">10世纪 - 14世纪</div>
+                            <h3>宋元时期：航海技术的突破</h3>
+                            <p>宋元时期，指南针应用于海船，推动了远洋航行的发展。中国造船技术也达到高峰，制造出大型的远洋海船。宋代泉州成为当时世界最大的港口之一，元代开辟了中国至欧洲的定期海上航线，海上交通网络更加完善。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <img src="https://images.unsplash.com/photo-1562524906-59151b2b6324?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="郑和下西洋" class="timeline-image">
+                            <div class="timeline-year">1405年 - 1433年</div>
+                            <h3>明朝：郑和下西洋</h3>
+                            <p>郑和在明朝永乐至宣德年间七下西洋，远航西太平洋和印度洋，最远到达非洲东海岸和红海沿岸。这是世界航海史上的壮举，展示了当时中国强大的航海能力和造船技术，加强了中国与亚非各国的友好往来。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <img src="https://images.unsplash.com/photo-1518335053484-27392d604d85?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="2019年交通强国建设纲要发布" class="timeline-image">
+                            <div class="timeline-year">2019年</div>
+                            <h3>2019年：交通强国建设纲要发布</h3>
+                            <p>2019年，中共中央、国务院印发《交通强国建设纲要》，明确了建设现代化综合交通体系的目标和任务，为中国海上交通的现代化发展提供了战略指导，推动中国向海洋强国迈进。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="2021年我国首艘自主航行集装箱商船'智飞'号投入运营" class="timeline-image">
+                            <div class="timeline-year">2021年</div>
+                            <h3>2021年：智能航运的突破</h3>
+                            <p>2021年，我国首艘自主航行集装箱商船"智飞"号投入运营，标志着中国在船舶智能航行领域处于全球前列。这艘船实现了远程监控、自动避碰、自动靠泊等功能，代表了中国智能航运技术的重大突破。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-container">
+                <button id="back-btn">返回</button>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        // 正确答案顺序
+        const correctOrder = ["1", "2", "3", "4", "5", "6"];
+        let hasSubmitted = false;
+        let draggedItem = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const answerContainer = document.getElementById('answer-container');
+            const draggableItems = document.querySelectorAll('.draggable-item');
+            
+            // 为每个可拖拽项添加事件监听器
+            draggableItems.forEach(item => {
+                item.addEventListener('touchstart', function(e) {
+                    draggedItem = this;
+                    e.preventDefault();
+                });
+                
+                item.addEventListener('touchmove', function(e) {
+                    if (!draggedItem) return;
+                    
+                    const touch = e.touches[0];
+                    const containerRect = answerContainer.getBoundingClientRect();
+                    
+                    const x = touch.clientX - containerRect.left;
+                    const y = touch.clientY - containerRect.top;
+                    
+                    draggedItem.style.position = 'absolute';
+                    draggedItem.style.left = `${x}px`;
+                    draggedItem.style.top = `${y}px`;
+                    draggedItem.style.zIndex = '100';
+                });
+                
+                item.addEventListener('touchend', function(e) {
+                    if (!draggedItem) return;
+                    
+                    draggedItem.style.position = '';
+                    draggedItem.style.left = '';
+                    draggedItem.style.top = '';
+                    draggedItem.style.zIndex = '';
+                    
+                    // 如果答案容器内有内容，则将拖拽的元素添加到答案容器中
+                    answerContainer.appendChild(draggedItem);
+                    draggedItem = null;
+                });
+                
+                // 鼠标事件保持不变
+                item.addEventListener('dragstart', function() {
+                    draggedItem = this;
+                    setTimeout(() => {
+                        this.style.opacity = '0.5';
+                    }, 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    this.style.opacity = '1';
+                });
+            });
+            
+            // 答案容器的拖拽事件
+            answerContainer.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('highlight');
+            });
+            
+            answerContainer.addEventListener('dragleave', function() {
+                this.classList.remove('highlight');
+            });
+            
+            answerContainer.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('highlight');
+                
+                // 如果有拖拽的元素，将其添加到答案容器
+                if (draggedItem) {
+                    this.appendChild(draggedItem);
+                }
+            });
+            
+            // 提交按钮事件
+            document.getElementById('submit-btn').addEventListener('click', function() {
+                if (hasSubmitted) return;
+                
+                const items = document.getElementById('answer-container').querySelectorAll('.draggable-item');
+                if (items.length !== correctOrder.length) {
+                    document.getElementById('result').textContent = '请先完成排序！';
+                    document.getElementById('result').className = 'result incorrect';
+                    document.getElementById('result').style.display = 'block';
+                    return;
+                }
+                
+                const userOrder = Array.from(items).map(item => item.dataset.value);
+                const isCorrect = userOrder.every((item, index) => item === correctOrder[index]);
+                
+                if (isCorrect) {
+                    document.getElementById('result').textContent = '恭喜你，排序正确！';
+                    document.getElementById('result').className = 'result correct';
+                } else {
+                    document.getElementById('result').textContent = '排序错误，请查看正确答案。';
+                    document.getElementById('result').className = 'result incorrect';
+                }
+                
+                document.getElementById('result').style.display = 'block';
+                
+                // 显示正确答案
+                const answerText = "秦汉时期开辟通往罗马帝国的海上航线 → 隋唐时期海上丝绸之路贸易兴盛 → 宋元时期指南针应用于海船，推动远洋航行 → 郑和在明朝永乐至宣德年间七下西洋，远航西太平洋和印度洋 → 2019 年中共中央、国务院印发《交通强国建设纲要》 → 2021 年我国首艘自主航行集装箱商船 '智飞' 号投入运营";
+                document.getElementById('correct-answer-text').textContent = answerText;
+                document.getElementById('correct-answer').style.display = 'block';
+                
+                document.getElementById('submit-btn').disabled = true;
+                hasSubmitted = true;
+            });
+            
+            // 下一页按钮事件
+            document.getElementById('next-page-btn').addEventListener('click', function() {
+                document.getElementById('quiz-section').style.display = 'none';
+                document.getElementById('quiz-btn-container').style.display = 'none';
+                document.getElementById('timeline-section').style.display = 'block';
+            });
+            
+            // 返回按钮事件
+            document.getElementById('back-btn').addEventListener('click', function() {
+                document.getElementById('timeline-section').style.display = 'none';
+                document.getElementById('quiz-section').style.display = 'block';
+                document.getElementById('quiz-btn-container').style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
+        <button class="switch-btn" onclick="switchPage(2)">进入第二页</button>
+    </div>
+    <!-- (首页结束) -->
+
+    <!-- (第二页开始) -->
+    <div id="page2" class="page">
+        <h1>第二页内容</h1>
+        <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海上丝绸之路重要港口</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#FF7D00',
+                        accent: '#00B42A',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans SC', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .map-port {
+                transition: all 0.3s ease;
+            }
+            .map-port:hover {
+                transform: scale(1.5);
+                filter: brightness(1.2);
+            }
+            .port-card {
+                transition: all 0.5s ease;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #165DFF 0%, #0039CB 100%);
+            }
+            .bg-glass {
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(10px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-light font-sans text-dark min-h-screen flex flex-col">
+    <!-- 导航栏 -->
+    <nav class="bg-gradient-blue text-white shadow-lg fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-anchor text-2xl"></i>
+                <h1 class="text-xl md:text-2xl font-bold">海上丝绸之路港口</h1>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#map-section" class="hover:text-secondary transition-colors duration-200">港口地图</a>
+                <a href="#intro-section" class="hover:text-secondary transition-colors duration-200">丝路简介</a>
+                <a href="#port-section" class="hover:text-secondary transition-colors duration-200">港口概览</a>
+            </div>
+            <button class="md:hidden text-xl" id="menu-toggle">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div class="md:hidden hidden bg-primary/95" id="mobile-menu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#map-section" class="py-2 hover:text-secondary transition-colors duration-200">港口地图</a>
+                <a href="#intro-section" class="py-2 hover:text-secondary transition-colors duration-200">丝路简介</a>
+                <a href="#port-section" class="py-2 hover:text-secondary transition-colors duration-200">港口概览</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="relative pt-20 md:pt-0 h-[80vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/id/1015/1920/1080" alt="海洋风景" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-dark/50"></div>
+        </div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2rem,5vw,4rem)] font-bold text-white mb-6 text-shadow animate-fadeIn">
+                海上丝绸之路<br>重要港口展示
+            </h1>
+            <p class="text-[clamp(1rem,2vw,1.5rem)] text-white/90 max-w-3xl mx-auto mb-8">
+                探索古代海上贸易的辉煌历史，见证中国海洋强国的崛起
+            </p>
+            <a href="#map-section" class="inline-block bg-secondary hover:bg-secondary/90 text-white font-bold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300">
+                开始探索 <i class="fa fa-compass ml-2"></i>
+            </a>
+        </div>
+        <div class="absolute bottom-8 left-0 right-0 text-center animate-bounce">
+            <a href="#map-section" class="text-white/80 hover:text-white">
+                <i class="fa fa-angle-down text-3xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- 地图区域 -->
+    <section id="map-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">海上丝绸之路港口地图</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">点击地图上的港口标记，探索各个港口的历史与文化</p>
+            </div>
+            
+            <div class="relative rounded-xl overflow-hidden shadow-xl">
+                <!-- 交互式地图 -->
+                <div id="map" class="w-full h-[600px]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 简介区域 -->
+    <section id="intro-section" class="py-20 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-6">海上丝绸之路：连接世界的纽带</h2>
+                    <p class="text-gray-700 mb-6 text-lg">
+                        海上丝绸之路是古代中国与外国交通贸易和文化交往的海上通道，它形成于秦汉时期，发展于三国至隋朝时期，繁荣于唐宋时期，转变于明清时期，是已知的最为古老的海上航线。
+                    </p>
+                    <p class="text-gray-700 mb-6 text-lg">
+                        在古代，海上丝绸之路从中国东南沿海，经过中南半岛和南海诸国，穿过印度洋，进入红海，抵达东非和欧洲，成为中国与外国贸易往来和文化交流的海上大通道，并推动了沿线各国的共同发展。
+                    </p>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#port-section" class="inline-block bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300">
+                            探索港口 <i class="fa fa-ship ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="rounded-xl overflow-hidden shadow-xl transform rotate-2 hover:rotate-0 transition-all duration-500">
+                        <img src="https://picsum.photos/id/1024/800/600" alt="古代商船" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 rounded-xl overflow-hidden shadow-xl transform -rotate-3 hover:rotate-0 transition-all duration-500 z-10 w-2/3">
+                        <img src="https://picsum.photos/id/1019/600/400" alt="海上丝绸之路路线图" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 港口详情区域 -->
+    <section id="port-section" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">海上丝绸之路重要港口</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">探索这些连接东西方文明的重要枢纽</p>
+            </div>
+            
+            <!-- 港口卡片 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="port-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-port="ningbo">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/1029/600/400" alt="宁波港口" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-dark">宁波</h3>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">中国</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">宁波舟山港是全球货物吞吐量第一的超级大港，拥有世界领先的自动化码头技术...</p>
+                        <button class="port-detail-btn text-primary font-bold flex items-center hover:text-primary/80 transition-colors duration-200">
+                            了解详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="port-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-port="colombo">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/1039/600/400" alt="科伦坡港口" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-dark">科伦坡</h3>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">斯里兰卡</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">中斯合作的科伦坡港口城项目是"21世纪海上丝绸之路"的旗舰项目，改写了地区航运格局...</p>
+                        <button class="port-detail-btn text-primary font-bold flex items-center hover:text-primary/80 transition-colors duration-200">
+                            了解详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="port-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-port="gwadar">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/1036/600/400" alt="瓜达尔港口" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-dark">瓜达尔</h3>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">巴基斯坦</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">中国援建的瓜达尔深水港成为中巴经济走廊的核心枢纽，推动地区互联互通...</p>
+                        <button class="port-detail-btn text-primary font-bold flex items-center hover:text-primary/80 transition-colors duration-200">
+                            了解详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="port-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-port="piraeus">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/1043/600/400" alt="比雷埃夫斯港口" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-dark">比雷埃夫斯</h3>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">希腊</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">中远海运控股收购后，这座地中海古港重焕生机，成为中欧陆海快线的桥头堡...</p>
+                        <button class="port-detail-btn text-primary font-bold flex items-center hover:text-primary/80 transition-colors duration-200">
+                            了解详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="port-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-port="jakarta">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/1053/600/400" alt="雅加达港口" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-dark">雅加达</h3>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">印度尼西亚</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">中国与印尼共建的雅加达环球港项目，采用中国智慧港口解决方案，大幅提升港口运营效率...</p>
+                        <button class="port-detail-btn text-primary font-bold flex items-center hover:text-primary/80 transition-colors duration-200">
+                            了解详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="port-card bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300" data-port="suez">
+                    <div class="h-60 overflow-hidden">
+                        <img src="https://picsum.photos/id/1061/600/400" alt="苏伊士运河港口" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-dark">苏赫奈泉</h3>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">埃及</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">中埃合作的苏伊士经贸合作区与新港建设，采用中国标准打造非洲最大临港工业区...</p>
+                        <button class="port-detail-btn text-primary font-bold flex items-center hover:text-primary/80 transition-colors duration-200">
+                            了解详情 <i class="fa fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 港口详情模态框 -->
+    <div id="port-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" id="modal-backdrop"></div>
+        <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10">
+                <i class="fa fa-times"></i>
+            </button>
+            <div id="modal-content" class="p-6">
+                <!-- 模态框内容将通过JS动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 海上丝绸之路港口展示平台. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 优化地图性能的选项
+        const mapOptions = {
+            preferCanvas: true, // 使用Canvas渲染而非SVG，提高性能
+            zoomControl: false, // 移除默认缩放控件
+            attributionControl: false, // 移除版权信息
+            fadeAnimation: true, // 启用淡入淡出动画
+            zoomAnimation: true, // 启用缩放动画
+            markerZoomAnimation: true // 启用标记缩放动画
+        };
+        
+        // 港口数据（包含经纬度信息）
+        const portData = {
+            ningbo: {
+                name: "宁波",
+                country: "中国",
+                coordinates: [29.8683, 121.5440],
+                image: "https://picsum.photos/id/1029/1200/600",
+                intro: "宁波舟山港是全球货物吞吐量第一、集装箱吞吐量第三的超级大港，由宁波港和舟山港合并组建而成。港口位于中国东部海岸线中段，长江三角洲南翼，是中国重要的铁矿石、原油、液化天然气等战略物资中转基地。",
+                history: "宁波，古称明州，是海上丝绸之路的重要起点之一。唐宋时期，宁波与扬州、广州并称为中国三大对外贸易港口，被誉为'海上陶瓷之路'的起点。宋元时期，宁波设立市舶司，管理对外贸易，成为当时中国最大的港口之一。明代，宁波是郑和下西洋的重要补给基地和启航港之一。",
+                modern: "如今，宁波舟山港已建成世界上最大的矿石中转基地、原油中转基地、液体化工储运基地和全球最大的集装箱码头群。港口拥有全球领先的自动化码头技术，其中梅山港区6号泊位是全球首个基于'北斗'导航系统和5G通信的智能化码头，作业效率比传统码头提升30%。该港口的发展不仅带动了长江经济带的繁荣，更通过'21世纪海上丝绸之路'与全球100多个国家和地区的600多个港口建立了航线联系，有力推动了国际贸易的发展。"
+            },
+            colombo: {
+                name: "科伦坡",
+                country: "斯里兰卡",
+                coordinates: [6.9271, 79.8612],
+                image: "https://picsum.photos/id/1039/1200/600",
+                intro: "科伦坡是斯里兰卡的商业首都和最大城市，位于斯里兰卡岛西南岸，濒临印度洋，是印度洋上的重要港口之一。科伦坡的名称来源于僧伽罗语，意为'海的天堂'。",
+                history: "科伦坡的历史可以追溯到2000多年前，当时它是古代海上丝绸之路的重要中转站。阿拉伯商人、中国商人、印度商人都曾在此停留和交易。16世纪，葡萄牙人来到这里，随后荷兰人和英国人相继统治斯里兰卡，科伦坡逐渐发展成为一个重要的港口城市。",
+                modern: "中斯合作的科伦坡港口城项目是'21世纪海上丝绸之路'的旗舰项目。该项目由中国交通建设集团投资建设，总投资约14亿美元，将打造一个集金融、商业、住宅、旅游为一体的现代化城市综合体。港口采用中国先进的港口规划理念和建设技术，建成后将大幅提升科伦坡港的货物处理能力，成为南亚地区的航运枢纽和'一带一路'倡议的重要标志性工程。"
+            },
+            gwadar: {
+                name: "瓜达尔",
+                country: "巴基斯坦",
+                coordinates: [25.2906, 62.2281],
+                image: "https://picsum.photos/id/1036/1200/600",
+                intro: "瓜达尔港位于巴基斯坦俾路支省西南部，靠近伊朗边境，是阿拉伯海沿岸的重要深水港口。港口距离霍尔木兹海峡约400公里，是连接中东、中亚和南亚的重要枢纽。",
+                history: "瓜达尔的历史可以追溯到古代，当时它是波斯帝国和阿拉伯帝国的重要贸易港口。在近代，瓜达尔曾先后被葡萄牙、英国等国家统治。1958年，巴基斯坦从阿曼手中买回瓜达尔，使其成为巴基斯坦的一部分。",
+                modern: "瓜达尔港是中巴经济走廊的核心枢纽，由中国海外港口控股有限公司运营管理。中国援建的瓜达尔港一期工程于2013年投入使用，二期工程正在建设中。港口采用中国设计标准和施工技术，拥有3个多功能码头和1个油码头，年处理能力超过1000万吨。港口的建成不仅改写了地区地缘经济格局，更为巴基斯坦带来了巨大的经济利益和发展机遇，成为'21世纪海上丝绸之路'的重要支点。"
+            },
+            piraeus: {
+                name: "比雷埃夫斯",
+                country: "希腊",
+                coordinates: [37.9448, 23.6382],
+                image: "https://picsum.photos/id/1043/1200/600",
+                intro: "比雷埃夫斯港位于希腊雅典西南8公里处，是希腊最大的港口，也是地中海地区重要的集装箱码头之一。港口由三个港区组成，包括老港区、新港区和油港区。",
+                history: "比雷埃夫斯的历史可以追溯到公元前5世纪，当时它是古希腊城邦雅典的主要港口。在古希腊时期，比雷埃夫斯港是地中海地区最繁忙的港口之一，也是古希腊文明的重要象征。在近代，比雷埃夫斯港经历了多次战争和重建，逐渐发展成为现代化的港口。",
+                modern: "2008年，中国远洋海运集团（COSCO）获得比雷埃夫斯港2号和3号集装箱码头35年特许经营权。2016年，中远海运控股收购比雷埃夫斯港口管理局67%的股权，成为控股股东。收购后，比雷埃夫斯港吞吐量从2010年的88万标准箱增长到2022年的684万标准箱，成为地中海第一、欧洲第四大集装箱港口。中国企业引入先进的管理经验和智能化技术，使这座千年古港重焕生机，成为中欧陆海快线的桥头堡和'21世纪海上丝绸之路'的欧洲门户。"
+            },
+            jakarta: {
+                name: "雅加达",
+                country: "印度尼西亚",
+                coordinates: [-6.2088, 106.8456],
+                image: "https://picsum.photos/id/1053/1200/600",
+                intro: "雅加达是印度尼西亚的首都和最大城市，位于爪哇岛西北海岸，是印度尼西亚的政治、经济和文化中心。雅加达港是印度尼西亚最大的港口，也是东南亚地区重要的贸易枢纽。",
+                history: "雅加达的历史可以追溯到14世纪，当时它是一个小渔村，名为巽他加拉巴。16世纪，葡萄牙人来到这里，随后荷兰人占领了该地区，并将其改名为巴达维亚。在荷兰殖民统治时期，雅加达逐渐发展成为一个重要的港口城市。1949年，印度尼西亚独立后，雅加达成为首都，并改名为雅加达。",
+                modern: "中国与印尼共建的雅加达环球港项目是两国在基础设施领域的重要合作项目。该项目由中国交通建设集团和印尼国有港口企业合作开发，总投资约40亿美元，将建设一个现代化的深水港口和临港经济区。港口采用中国智慧港口解决方案，引入自动化码头技术和物联网系统，大幅提升港口运营效率。项目建成后，将大幅提升雅加达港的货物处理能力，助力印尼打造东南亚最大的临港经济区，成为'21世纪海上丝绸之路'在东南亚的重要节点。"
+            },
+            suez: {
+                name: "苏赫奈泉",
+                country: "埃及",
+                coordinates: [29.1790, 32.5477],
+                image: "https://picsum.photos/id/1061/1200/600",
+                intro: "苏赫奈泉港位于埃及红海沿岸，苏伊士运河东侧，是埃及重要的港口之一。港口距离苏伊士运河约45公里，是连接地中海和红海的重要枢纽。",
+                history: "苏赫奈泉的历史可以追溯到古代，当时它是埃及与阿拉伯半岛之间的重要贸易路线。在近代，随着苏伊士运河的开通，苏赫奈泉逐渐发展成为一个重要的港口城市。20世纪70年代，埃及政府开始在苏赫奈泉建设现代化港口，以满足日益增长的贸易需求。",
+                modern: "中埃合作的苏伊士经贸合作区与新港建设是'21世纪海上丝绸之路'在非洲的重要示范项目。合作区由中国天津泰达投资控股有限公司主导开发，总规划面积6平方公里，目前已吸引了来自中国、埃及、美国等国家的120多家企业入驻，涉及石油装备、高低压电器、纺织服装等多个领域。港口采用中国港口建设标准和管理经验，建成后将成为非洲最大的临港工业区和中东地区的物流中心，有力推动中埃两国乃至整个非洲地区的经济发展和互联互通。"
+            }
+        };
+
+        // DOM元素
+        const portModal = document.getElementById('port-modal');
+        const modalContent = document.getElementById('modal-content');
+        const modalBackdrop = document.getElementById('modal-backdrop');
+        const closeModal = document.getElementById('close-modal');
+        const portDetailBtns = document.querySelectorAll('.port-detail-btn');
+        const mobileMenuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navbar = document.getElementById('navbar');
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('py-2');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('bg-primary');
+                navbar.classList.remove('bg-gradient-blue');
+            } else {
+                navbar.classList.add('py-3');
+                navbar.classList.remove('py-2');
+                navbar.classList.add('bg-gradient-blue');
+                navbar.classList.remove('bg-primary');
+            }
+        });
+
+        // 移动端菜单切换
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 关闭模态框
+        function closePortModal() {
+            portModal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // 打开模态框
+        function openPortModal(portId) {
+            const port = portData[portId];
+            if (!port) return;
+
+            modalContent.innerHTML = `
+                <div class="relative rounded-xl overflow-hidden shadow-xl mb-6">
+                    <img src="${port.image}" alt="${port.name}港口" class="w-full h-auto">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                        <div class="flex justify-between items-center">
+                            <h2 class="text-3xl font-bold text-white">${port.name}</h2>
+                            <span class="bg-white/20 text-white px-4 py-2 rounded-full backdrop-blur-sm">${port.country}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">港口简介</h3>
+                        <p class="text-gray-700 text-lg">${port.intro}</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">历史地位</h3>
+                        <p class="text-gray-700 text-lg">${port.history}</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">现代发展</h3>
+                        <p class="text-gray-700 text-lg">${port.modern}</p>
+                    </div>
+                </div>
+            `;
+
+            portModal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        // 绑定事件
+        portDetailBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const portCard = btn.closest('.port-card');
+                const portId = portCard.dataset.port;
+                openPortModal(portId);
+            });
+        });
+
+        closeModal.addEventListener('click', closePortModal);
+        modalBackdrop.addEventListener('click', closePortModal);
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // 初始化地图
+        document.addEventListener('DOMContentLoaded', () => {
+            // 创建地图实例并设置中心坐标和缩放级别
+            const map = L.map('map', mapOptions).setView([20, 80], 3);
+            
+            // 添加地图图层
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19
+            }).addTo(map);
+            
+            // 添加自定义缩放控件
+            L.control.zoom({
+                position: 'topright'
+            }).addTo(map);
+            
+            // 添加港口标记
+            Object.keys(portData).forEach(portId => {
+                const port = portData[portId];
+                
+                // 创建自定义图标
+                const portIcon = L.divIcon({
+                    className: 'custom-port-icon',
+                    html: `<div class="w-6 h-6 bg-secondary rounded-full shadow-lg flex items-center justify-center transform transition-transform hover:scale-150 cursor-pointer"><i class="fa fa-anchor text-white text-xs"></i></div>`,
+                    iconSize: [30, 30],
+                    iconAnchor: [15, 15]
+                });
+                
+                const marker = L.marker(port.coordinates, { icon: portIcon }).addTo(map);
+                
+                // 添加弹出信息
+                marker.bindPopup(`
+                    <div class="font-sans p-2">
+                        <h3 class="font-bold text-lg">${port.name}</h3>
+                        <p class="text-gray-600">${port.country}</p>
+                        <button class="view-port-btn bg-primary text-white px-3 py-1 rounded text-sm mt-2 w-full" data-port="${portId}">
+                            查看详情
+                        </button>
+                    </div>
+                `);
+                
+                // 绑定弹出窗口中的按钮事件
+                marker.on('popupopen', function() {
+                    const popup = this.getPopup();
+                    const btn = popup._contentNode.querySelector('.view-port-btn');
+                    
+                    if (btn) {
+                        btn.addEventListener('click', () => {
+                            openPortModal(portId);
+                            map.closePopup();
+                        });
+                    }
+                });
+            });
+            
+            // 添加路线
+            const routeCoordinates = [
+                portData.ningbo.coordinates,
+                portData.colombo.coordinates,
+                portData.gwadar.coordinates,
+                portData.piraeus.coordinates,
+                portData.jakarta.coordinates,
+                portData.suez.coordinates
+            ];
+            
+            // 优化路线渲染
+            const route = L.polyline(routeCoordinates, {
+                color: '#FF7D00',
+                weight: 3,
+                opacity: 0.7,
+                lineJoin: 'round',
+                smoothFactor: 1
+            }).addTo(map);
+            
+            // 确保所有标记都在视野内
+            map.fitBounds(route.getBounds(), { padding: [50, 50] });
+            
+            // 优化地图性能的其他设置
+            map._onResize(); // 强制地图重绘
+        });
+    </script>
+</body>
+</html>
+        <button class="switch-btn" onclick="switchPage(1)" style="right: 140px;">返回首页</button>
+        <button class="switch-btn" onclick="switchPage(3)">进入第三页</button>
+    </div>
+    <!-- (第二页结束) -->
+
+    <!-- (第三页开始) -->
+    <div id="page3" class="page">
+        <h1>第三页内容</h1>
+     <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我与交通强国 - VR 全景体验</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .vr-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background-color: #ffffff;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 70vh;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #vr-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .control-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: flex;
+            gap: 1rem;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: opacity 0.3s;
+        }
+
+        .control-btn:hover {
+            opacity: 0.8;
+        }
+
+        #fullscreen-btn {
+            /* 全屏图标可替换为字体图标或图片 */
+            content: '🔍';
+        }
+
+        /* 全屏样式 */
+        .fullscreen .vr-container {
+            flex-grow: 1;
+            padding: 0;
+        }
+
+        .fullscreen #vr-iframe {
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>🚄 我与交通强国 · VR 全景体验</h1>
+        <p>通过全景视角感受交通发展成就</p>
+    </header>
+
+    <main class="vr-container">
+        <div class="iframe-wrapper">
+            <iframe 
+                id="vr-iframe"
+                src="https://www.720yun.com/t/aa5jz0eOtn0?scene_id=8616564&type=360" 
+                allowfullscreen
+                allow="xr-spatial-tracking; gyroscope"
+            ></iframe>
+        </div>
+    </main>
+
+    <div class="control-bar">
+        <button id="fullscreenBtn" class="control-btn" onclick="toggleFullscreen()">
+            全屏模式 🔍
+        </button>
+        <span>拖动鼠标或移动设备查看全景</span>
+    </div>
+
+    <script>
+        // 全屏切换功能
+        function toggleFullscreen() {
+            const iframe = document.getElementById('vr-iframe');
+            const vrContainer = document.querySelector('.vr-container');
+            
+            if (!document.fullscreenElement) {
+                iframe.requestFullscreen().catch(err => {
+                    console.error('全屏请求失败:', err);
+                    if (vrContainer.requestFullscreen) {
+                        vrContainer.requestFullscreen();
+                    }
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // 适配移动端双击缩放（720yun 自带手势支持，此处可按需扩展）
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 2) {
+                e.preventDefault(); // 阻止默认缩放行为
+            }
+        });
+    </script>
+</body>
+</html>
+        <button class="switch-btn" onclick="switchPage(2)" style="right: 140px;">返回第二页</button>
+        <button class="switch-btn" onclick="switchPage(4)">进入第四页</button>
+    </div>
+    <!-- (第三页结束) -->
+
+    <!-- (第四页开始) -->
+    <div id="page4" class="page">
+        <h1>第四页内容</h1>
+    <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我与海运交通强国</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#FF7D00',
+                        tertiary: '#00B42A',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #165DFF 0%, #0040C9 100%);
+            }
+            .counter-value {
+                counter-reset: count 0;
+                animation: count 2s forwards ease-out;
+            }
+            @keyframes count {
+                to {
+                    counter-reset: count var(--count);
+                }
+            }
+            .counter-value::after {
+                content: counter(count);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark antialiased">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300">
+        <nav class="bg-white/90 backdrop-blur-md shadow-sm py-4 px-6 md:px-12">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fa fa-ship text-primary text-2xl"></i>
+                    <span class="text-xl font-bold text-primary">我与海运交通强国</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="font-medium hover:text-primary transition-colors">首页</a>
+                    <a href="#daily-life" class="font-medium hover:text-primary transition-colors">我的日常生活</a>
+                    <a href="#impact" class="font-medium hover:text-primary transition-colors">海运带来的改变</a>
+                    <a href="#maritime-data" class="font-medium hover:text-primary transition-colors">海运数据</a>
+                    <a href="#global-connection" class="font-medium hover:text-primary transition-colors">全球连接</a>
+                    <a href="#future-outlook" class="font-medium hover:text-primary transition-colors">未来展望</a>
+                    <a href="#contribution" class="font-medium hover:text-primary transition-colors">我的贡献</a>
+                </div>
+                <button class="md:hidden text-dark text-xl">
+                    <i class="fa fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="pt-28 pb-20 md:pt-40 md:pb-32 bg-gradient-blue text-white overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow">
+                        我与海运<br><span class="text-secondary">交通强国</span>
+                    </h1>
+                    <p class="mt-6 text-lg md:text-xl opacity-90 max-w-lg">
+                        从港口到校园，从课堂到生活，海运交通强国建设正深刻改变着我的每一天。
+                    </p>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <a href="#daily-life" class="bg-secondary hover:bg-secondary/90 text-white px-8 py-3 rounded-lg font-medium transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            了解更多
+                        </a>
+                        <a href="#maritime-data" class="bg-white/20 hover:bg-white/30 text-white px-8 py-3 rounded-lg font-medium transition-all backdrop-blur-sm">
+                            查看数据
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-50"></div>
+                    <div class="relative bg-white/10 backdrop-blur-md rounded-2xl p-1 shadow-2xl">
+                        <img src="https://www.vcg.com/creative-image/447185/辽宁省大连港口货轮船出海" alt="中国港口" class="w-full h-auto rounded-xl">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 rounded-b-xl">
+                            <p class="text-white font-medium">中国港口集装箱吞吐量连续多年位居世界第一</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-light to-transparent"></div>
+    </section>
+
+    <!-- 我的日常生活 -->
+    <section id="daily-life" class="py-20 bg-light">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">我的日常生活</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">作为一名普通学生，海运交通强国建设如何影响我的日常生活？让我们一起来看看</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 日常物品 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-60">
+                        <img src="https://picsum.photos/id/26/600/400" alt="超市货架上的进口商品" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                            <div class="p-6">
+                                <h3 class="text-white text-xl font-bold">丰富的日常用品</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">每天早上，我使用的洗发水可能来自法国，咖啡可能产自巴西，运动鞋则可能是越南制造。这些商品通过海运来到中国，丰富了我的日常生活。</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">国际贸易</span>
+                            <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">物流便利</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 学习资源 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-60">
+                        <img src="https://picsum.photos/id/42/600/400" alt="图书馆里的进口书籍" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                            <div class="p-6">
+                                <h3 class="text-white text-xl font-bold">全球化的学习资源</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">在学校图书馆，我可以借阅到来自世界各地的学术著作和教材。这些书籍大多通过海运抵达中国，为我的学习提供了丰富的资源。</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">文化交流</span>
+                            <span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-sm">教育资源</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 旅游出行 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-60">
+                        <img src="https://picsum.photos/id/1036/600/400" alt="邮轮旅行" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                            <div class="p-6">
+                                <h3 class="text-white text-xl font-bold">便捷的旅行体验</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">寒暑假，我可以选择乘坐豪华邮轮开启我的旅行。中国港口的不断发展，让邮轮旅游成为越来越多人的选择，也让我的出行更加丰富多彩。</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">旅游业</span>
+                            <span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-sm">交通便利</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                            <i class="fa fa-shopping-bag text-xl"></i>
+                        </div>
+                        <h3 class="ml-4 text-lg font-bold">进口商品种类</h3>
+                    </div>
+                    <p class="text-gray-600">由于海运的便利，中国进口商品种类不断丰富。过去五年，我所在城市的大型超市进口商品种类从不足2000种增加到超过8000种。</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
+                            <i class="fa fa-book text-xl"></i>
+                        </div>
+                        <h3 class="ml-4 text-lg font-bold">国际教材获取</h3>
+                    </div>
+                    <p class="text-gray-600">海运让国际教材的获取更加便捷。现在，我从下单购买国外教材到收到书，平均只需要15天，比五年前缩短了一半时间。</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
+                            <i class="fa fa-ship text-xl"></i>
+                        </div>
+                        <h3 class="ml-4 text-lg font-bold">邮轮旅游人次</h3>
+                    </div>
+                    <p class="text-gray-600">中国邮轮旅游市场近年来快速发展。去年，仅我所在城市的港口就接待了超过80万人次的邮轮旅客，比前一年增长了20%。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 海运带来的改变 -->
+    <section id="impact" class="py-20 bg-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">海运带来的改变</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">海运交通强国建设如何影响我们的生活？从经济到文化，从环境到教育，让我们一起探索</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">经济发展带来的实惠</h3>
+                    <p class="text-gray-600 mb-6">
+                        作为世界第一海运大国，中国的港口集装箱吞吐量连续多年位居世界第一。2024年，中国港口集装箱吞吐量达到2.8亿标准箱，占全球总量的30%以上。海运的发展不仅推动了国际贸易，也为我们的日常生活带来了实实在在的好处。
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="mt-1">
+                                <i class="fa fa-check-circle text-primary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">商品价格下降</h4>
+                                <p class="text-gray-600">海运成本的降低使得进口商品价格更加亲民。过去五年，我日常购买的进口食品平均价格下降了15%。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mt-1">
+                                <i class="fa fa-check-circle text-primary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">就业机会增加</h4>
+                                <p class="text-gray-600">海运相关产业的发展创造了大量就业机会。仅我所在的城市，就有超过20万人从事与海运相关的工作。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="mt-1">
+                                <i class="fa fa-check-circle text-primary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">生活水平提高</h4>
+                                <p class="text-gray-600">海运促进了经济发展，提高了居民收入水平。我家的年收入在过去十年中增长了200%，生活质量显著提升。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-tertiary rounded-2xl blur opacity-20"></div>
+                    <div class="relative bg-white rounded-2xl p-6 shadow-xl">
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-xl font-bold">家庭消费结构变化</h3>
+                            <div class="text-sm text-gray-500">
+                                <span id="chart-year">2020</span>
+                                <button id="prev-year" class="mx-2 text-primary hover:text-primary/80 cursor-pointer">
+                                    <i class="fa fa-chevron-left"></i>
+                                </button>
+                                <button id="next-year" class="mx-2 text-primary hover:text-primary/80 cursor-pointer">
+                                    <i class="fa fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <canvas id="consumptionChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gradient-blue text-white rounded-xl p-8 shadow-lg transform transition-all hover:scale-105">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">全球化视野</h3>
+                    <p class="opacity-90">海运让世界变得更小。通过进口商品、国际交流和旅游，我接触到了不同国家的文化和思想，拓宽了自己的视野。</p>
+                    <div class="mt-6 text-3xl font-bold">
+                        <span class="counter-value" data-count="12"></span>+
+                        <span class="text-sm font-normal ml-1">国家</span>
+                    </div>
+                    <p class="text-sm opacity-80 mt-2">我通过海运产品接触过的国家数量</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-secondary to-orange-500 text-white rounded-xl p-8 shadow-lg transform transition-all hover:scale-105">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">教育资源丰富</h3>
+                    <p class="opacity-90">海运便利了国际教育资源的交流。我能够更容易地获取国外优秀教材、参加国际学术会议，甚至有机会到海外交流学习。</p>
+                    <div class="mt-6 text-3xl font-bold">
+                        <span class="counter-value" data-count="35"></span>%
+                    </div>
+                    <p class="text-sm opacity-80 mt-2">我校使用进口教材的课程比例</p>
+                </div>
+
+                <div class="bg-gradient-to-br from-tertiary to-green-500 text-white rounded-xl p-8 shadow-lg transform transition-all hover:scale-105">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">技术创新</h3>
+                    <p class="opacity-90">随着海运交通强国建设，船舶技术和港口管理水平不断提高。自动化码头、智能船舶等新技术的应用，让我对未来的海运发展充满期待。</p>
+                    <div class="mt-6 text-3xl font-bold">
+                        <span class="counter-value" data-count="40"></span>+
+                        <span class="text-sm font-normal ml-1">新技术</span>
+                    </div>
+                    <p class="text-sm opacity-80 mt-2">我国自主研发的船舶新技术</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 海运数据 -->
+    <section id="maritime-data" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">海运数据</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">海运交通强国建设取得了显著成就，让我们通过数据来了解这些变化</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-6">中国港口集装箱吞吐量（2015-2024）</h3>
+                    <canvas id="containerChart" width="400" height="300"></canvas>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-6">全球主要港口货物吞吐量排名</h3>
+                    <canvas id="portRankingChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold">中国商船队规模</h3>
+                        <div class="text-primary text-2xl">
+                            <i class="fa fa-line-chart"></i>
+                        </div>
+                    </div>
+                    <div class="h-60">
+                        <canvas id="fleetChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">2024年总吨位</span>
+                            <span class="font-bold">2.8亿载重吨</span>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <span class="text-gray-600">全球占比</span>
+                            <span class="font-bold text-primary">15%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold">中国海运贸易额</h3>
+                        <div class="text-secondary text-2xl">
+                            <i class="fa fa-money"></i>
+                        </div>
+                    </div>
+                    <div class="h-60">
+                        <canvas id="tradeChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">2024年总额</span>
+                            <span class="font-bold">5.8万亿美元</span>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <span class="text-gray-600">全球占比</span>
+                            <span class="font-bold text-secondary">18%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold">中国港口自动化水平</h3>
+                        <div class="text-tertiary text-2xl">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+                    </div>
+                    <div class="h-60">
+                        <canvas id="automationChart"></canvas>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-gray-100">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">自动化码头数量</span>
+                            <span class="font-bold">18个</span>
+                        </div>
+                        <div class="flex justify-between mt-2">
+                            <span class="text-gray-600">全球占比</span>
+                            <span class="font-bold text-tertiary">45%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-xl font-bold mb-8 text-center">海运相关数据一览</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-primary/5 rounded-lg p-6 text-center">
+                        <div class="text-4xl font-bold text-primary mb-2">
+                            <span class="counter-value" data-count="30"></span>%
+                        </div>
+                        <p class="text-gray-600">中国海运承担了全球贸易量的比例</p>
+                    </div>
+                    <div class="bg-secondary/5 rounded-lg p-6 text-center">
+                        <div class="text-4xl font-bold text-secondary mb-2">
+                            <span class="counter-value" data-count="2800"></span>+
+                        </div>
+                        <p class="text-gray-600">中国港口与全球的航线数量</p>
+                    </div>
+                    <div class="bg-tertiary/5 rounded-lg p-6 text-center">
+                        <div class="text-4xl font-bold text-tertiary mb-2">
+                            <span class="counter-value" data-count="9"></span>
+                        </div>
+                        <p class="text-gray-600">全球前十港口中中国港口数量</p>
+                    </div>
+                    <div class="bg-dark/5 rounded-lg p-6 text-center">
+                        <div class="text-4xl font-bold text-dark mb-2">
+                            <span class="counter-value" data-count="85"></span>%
+                        </div>
+                        <p class="text-gray-600">中国原油进口依赖海运的比例</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 全球连接 -->
+    <section id="global-connection" class="py-20 bg-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">全球连接</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">海运让中国与世界紧密相连，让我们看看这些连接如何影响我的生活</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="relative">
+                        <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-20"></div>
+                        <div class="relative bg-white rounded-2xl overflow-hidden shadow-xl">
+                            <img src="https://www.vcg.com/creative-image/447185/辽宁省大连港口货轮船出海" alt="全球海运航线图" class="w-full h-auto">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
+                                <div class="p-8">
+                                    <h3 class="text-white text-2xl font-bold mb-2">连接全球的海运网络</h3>
+                                    <p class="text-white/90">中国港口与全球200多个国家和地区的600多个港口建立了航线联系</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">我与世界的距离</h3>
+                    <p class="text-gray-600 mb-6">
+                        得益于发达的海运网络，我能够轻松享受到来自世界各地的产品和服务。从南美洲的水果到欧洲的奢侈品，从澳洲的奶粉到东南亚的电子产品，海运让世界触手可及。
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                                <i class="fa fa-apple text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">进口水果</h4>
+                                <p class="text-gray-600">我每周购买的智利车厘子，从采摘到摆上我家附近超市的货架，只需要15天时间，这得益于高效的冷链海运技术。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary flex-shrink-0">
+                                <i class="fa fa-book text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">学术资源</h4>
+                                <p class="text-gray-600">我正在研究的课题需要参考德国的一本专业书籍，通过海运，这本书从德国港口出发，仅用了20天就到达了我的学校图书馆。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary flex-shrink-0">
+                                <i class="fa fa-gamepad text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="font-bold">电子产品</h4>
+                                <p class="text-gray-600">我新买的智能手机，其零部件来自全球十几个国家，通过海运集中到中国组装，最终送到我的手中。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-gray-50 rounded-xl shadow-lg p-8">
+                <h3 class="text-xl font-bold mb-8">主要贸易伙伴与航线</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold">中国-东南亚航线</h4>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">最繁忙</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                                <i class="fa fa-compass text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-gray-600">每周有超过300个航班往返于中国与东南亚之间</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">年货运量</span>
+                                <span class="font-bold">3.2亿吨</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">主要货物</span>
+                                <span class="text-gray-800">电子产品、纺织品、农产品</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">对我的影响</span>
+                                <span class="text-primary">我使用的手机有很多零部件来自这条航线</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold">中国-欧洲航线</h4>
+                            <span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full text-sm">增长快</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
+                                <i class="fa fa-euro text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-gray-600">中欧班列与海运形成互补，年运输量增长15%</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">年货运量</span>
+                                <span class="font-bold">2.5亿吨</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">主要货物</span>
+                                <span class="text-gray-800">汽车、机械、奢侈品</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">对我的影响</span>
+                                <span class="text-primary">我购买的欧洲品牌服装通过这条航线运输</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold">中国-美洲航线</h4>
+                            <span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-sm">潜力大</span>
+                        </div>
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary">
+                                <i class="fa fa-american-sign-language-interpreting text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-gray-600">连接中国与南北美洲，是中国重要的农产品进口通道</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">年货运量</span>
+                                <span class="font-bold">1.8亿吨</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">主要货物</span>
+                                <span class="text-gray-800">大豆、玉米、肉类、电子产品</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">对我的影响</span>
+                                <span class="text-primary">我每天喝的牛奶原料来自这条航线的进口奶粉</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 未来展望 -->
+    <section id="future-outlook" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">未来展望</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">海运交通强国建设的未来发展方向与愿景</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-60">
+                        <img src="https://picsum.photos/id/1071/600/400" alt="智能船舶" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                            <div class="p-6">
+                                <h3 class="text-white text-xl font-bold">智能化与自动化</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">未来，随着人工智能、大数据和物联网技术的发展，海运业将朝着智能化和自动化方向大步迈进。智能船舶、自动化码头和智能物流系统将大幅提高运输效率，降低成本。</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">技术创新</span>
+                            <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">效率提升</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-60">
+                        <img src="https://picsum.photos/id/1048/600/400" alt="绿色船舶" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                            <div class="p-6">
+                                <h3 class="text-white text-xl font-bold">绿色与可持续发展</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">环保意识的增强和国际法规的收紧将推动海运业更加注重绿色发展。未来，船舶将使用更清洁的燃料，采用更高效的能源管理系统，减少碳排放，实现可持续发展。</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-sm">环境保护</span>
+                            <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">可持续发展</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative h-60">
+                        <img src="https://picsum.photos/id/1059/600/400" alt="全球贸易" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+                            <div class="p-6">
+                                <h3 class="text-white text-xl font-bold">全球互联互通</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600">随着"一带一路"倡议的深入推进，中国将与更多国家和地区建立更紧密的海运联系。这将进一步促进国际贸易和文化交流，推动构建人类命运共同体。</p>
+                        <div class="mt-4">
+                            <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">一带一路</span>
+                            <span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-sm">国际合作</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-8 text-center">海运交通强国的未来目标</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fa fa-anchor text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">世界一流港口建设</h4>
+                                    <p class="text-gray-600">到2035年，中国将建成一批具有全球影响力的世界一流港口，港口货物和集装箱吞吐量稳居世界前列，港口智能化、绿色化水平达到国际领先。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary flex-shrink-0">
+                                    <i class="fa fa-ship text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">强大的商船队</h4>
+                                    <p class="text-gray-600">中国商船队规模将进一步扩大，船队结构更加优化，技术水平显著提升。到2035年，中国商船队总吨位将达到4.5亿载重吨，占全球比重提高到20%以上。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary flex-shrink-0">
+                                    <i class="fa fa-globe text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">全球海运网络</h4>
+                                    <p class="text-gray-600">中国将进一步完善全球海运网络布局，加强与"一带一路"沿线国家和地区的港口合作，建设更加便捷、高效的国际物流通道。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-dark/10 rounded-full flex items-center justify-center text-dark flex-shrink-0">
+                                    <i class="fa fa-cogs text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">海运科技创新</h4>
+                                    <p class="text-gray-600">加大对海运科技研发的投入，重点突破智能船舶、绿色船舶、自动化码头等关键技术，推动海运业数字化、智能化转型。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                                    <i class="fa fa-book text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">海运人才培养</h4>
+                                    <p class="text-gray-600">加强海运人才培养体系建设，培养一批具有国际视野、创新能力和实践经验的高素质海运人才，为海运交通强国建设提供坚实的人才保障。</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center text-secondary flex-shrink-0">
+                                    <i class="fa fa-leaf text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h4 class="font-bold text-lg">绿色低碳发展</h4>
+                                    <p class="text-gray-600">全面推进海运业绿色低碳发展，推广应用清洁能源船舶，加强港口污染防治，降低碳排放强度，实现海运业可持续发展。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 我的贡献 -->
+    <section id="contribution" class="py-20 bg-white">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark">作为大连海事大学学子的我</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">为了海运交通强国，我可以做什么？</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20 z-0"></div>
+                <div class="space-y-12 relative z-10">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 mt-8 md:mt-0">
+                            <h3 class="text-xl font-bold mb-3">努力学习专业知识</h3>
+                            <p class="text-gray-600">作为大连海事大学的一名学生，我深知专业知识的重要性。我将努力学习船舶驾驶、轮机工程、航海技术等专业课程，为未来从事海运事业打下坚实的理论基础。</p>
+                            <div class="mt-4">
+                                <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">知识储备</span>
+                                <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">专业学习</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white z-20 order-1 md:order-2">
+                            <i class="fa fa-book text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 order-3 hidden md:block"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 order-1 hidden md:block"></div>
+                        <div class="w-12 h-12 bg-secondary rounded-full flex items-center justify-center text-white z-20 order-2">
+                            <i class="fa fa-users text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 order-3 mt-8 md:mt-0">
+                            <h3 class="text-xl font-bold mb-3">积极参与实践活动</h3>
+                            <p class="text-gray-600">我将积极参与学校组织的实习、实训和科研项目，积累实践经验。通过上船实习，了解船舶运营和管理；参与科研项目，探索海运领域的前沿技术。</p>
+                            <div class="mt-4">
+                                <span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-sm">实践能力</span>
+                                <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">科研探索</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 mt-8 md:mt-0">
+                            <h3 class="text-xl font-bold mb-3">培养创新精神</h3>
+                            <p class="text-gray-600">面对海运业的快速发展和技术变革，我将培养自己的创新精神，关注行业动态和前沿技术。积极参与创新创业比赛和活动，尝试提出新的解决方案和思路。</p>
+                            <div class="mt-4">
+                                <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">创新思维</span>
+                                <span class="inline-block px-3 py-1 bg-dark/10 text-dark rounded-full text-sm">技术变革</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-tertiary rounded-full flex items-center justify-center text-white z-20 order-1 md:order-2">
+                            <i class="fa fa-lightbulb-o text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 order-3 hidden md:block"></div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 order-1 hidden md:block"></div>
+                        <div class="w-12 h-12 bg-dark rounded-full flex items-center justify-center text-white z-20 order-2">
+                            <i class="fa fa-globe text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 order-3 mt-8 md:mt-0">
+                            <h3 class="text-xl font-bold mb-3">树立全球视野</h3>
+                            <p class="text-gray-600">海运是全球性的行业，我将努力学习外语，了解不同国家的文化和商业习惯，积极参与国际交流与合作，为中国海运业的国际化发展贡献自己的力量。</p>
+                            <div class="mt-4">
+                                <span class="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">国际交流</span>
+                                <span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-sm">全球视野</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 mt-8 md:mt-0">
+                            <h3 class="text-xl font-bold mb-3">关注绿色发展</h3>
+                            <p class="text-gray-600">随着环保意识的增强，海运业的绿色发展成为必然趋势。我将关注船舶节能减排技术和港口环保措施，为海运业的可持续发展提供新思路。</p>
+                            <div class="mt-4">
+                                <span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary rounded-full text-sm">环保意识</span>
+                                <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">可持续发展</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white z-20 order-1 md:order-2">
+                            <i class="fa fa-leaf text-xl"></i>
+                        </div>
+                        <div class="md:w-1/2 md:pl-12 order-3 hidden md:block"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 bg-gray-50 rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-8 text-center">我的行动计划</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-6 mx-auto">
+                            <i class="fa fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-4">提升专业素养</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span>努力学习专业课程，争取优异成绩</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span>参加专业技能培训和认证考试</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span>阅读专业书籍和文献，了解行业动态</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                <span>参与学术研究和科研项目</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center text-secondary mb-6 mx-auto">
+                            <i class="fa fa-suitcase text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-4">积累实践经验</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                                <span>申请上船实习，熟悉船舶操作流程</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                                <span>参与港口或航运企业的实践项目</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                                <span>参加模拟航运操作和决策比赛</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                                <span>加入海运相关社团和组织</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6 hover:shadow-lg transition-shadow">
+                        <div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center text-tertiary mb-6 mx-auto">
+                            <i class="fa fa-users text-2xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-center mb-4">拓展国际视野</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-tertiary mt-1 mr-2"></i>
+                                <span>学习外语，提高跨文化交流能力</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-tertiary mt-1 mr-2"></i>
+                                <span>参加国际学术会议和交流活动</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-tertiary mt-1 mr-2"></i>
+                                <span>关注国际海运规则和政策变化</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-tertiary mt-1 mr-2"></i>
+                                <span>参与国际合作项目和志愿服务</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="text-center">
+                <p class="text-gray-400 mb-6">海运交通强国建设正深刻改变着我们的生活，作为新时代的青年，我们应积极参与其中，为实现海运强国梦贡献自己的力量。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 动态数据
+        const dynamicData = {
+            consumption: {
+                2020: [30, 25, 15, 12, 8, 10],
+                2021: [28, 24, 16, 13, 9, 10],
+                2022: [26, 23, 17, 14, 10, 10],
+                2023: [24, 22, 18, 15, 11, 10],
+                2024: [22, 21, 19, 16, 12, 10]
+            },
+            containerThroughput: {
+                years: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.75, 2.8]
+            },
+            portRanking: {
+                labels: ['上海', '新加坡', '宁波舟山', '深圳', '广州', '釜山', '香港', '青岛', '鹿特丹', '天津'],
+                data: [7.7, 6.2, 6.1, 5.5, 5.2, 3.5, 3.4, 3.3, 3.2, 3.1]
+            },
+            fleetSize: {
+                years: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.8]
+            },
+            tradeValue: {
+                years: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [3.5, 3.8, 4.0, 4.2, 4.5, 4.8, 5.0, 5.3, 5.5, 5.8]
+            },
+            automationLevel: {
+                years: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [5, 7, 9, 11, 13, 15, 16, 17, 18, 18]
+            }
+        };
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-white/90');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-white/90');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 消费结构图表
+        const consumptionCtx = document.getElementById('consumptionChart').getContext('2d');
+        let consumptionChart = new Chart(consumptionCtx, {
+            type: 'pie',
+            data: {
+                labels: ['食品饮料', '住房', '交通通信', '教育文化娱乐', '医疗保健', '其他'],
+                datasets: [{
+                    label: '消费占比',
+                    data: dynamicData.consumption[2020],
+                    backgroundColor: [
+                        '#165DFF',
+                        '#FF7D00',
+                        '#00B42A',
+                        '#86909C',
+                        '#722ED1',
+                        '#F5222D'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: '家庭消费结构 (%)'
+                    }
+                }
+            }
+        });
+
+        // 年份切换
+        document.getElementById('prev-year').addEventListener('click', function() {
+            const yearEl = document.getElementById('chart-year');
+            let year = parseInt(yearEl.textContent);
+            if (year > 2020) {
+                year--;
+                yearEl.textContent = year;
+                updateConsumptionChart(year);
+            }
+        });
+
+        document.getElementById('next-year').addEventListener('click', function() {
+            const yearEl = document.getElementById('chart-year');
+            let year = parseInt(yearEl.textContent);
+            if (year < 2024) {
+                year++;
+                yearEl.textContent = year;
+                updateConsumptionChart(year);
+            }
+        });
+
+        function updateConsumptionChart(year) {
+            consumptionChart.data.datasets[0].data = dynamicData.consumption[year];
+            consumptionChart.update();
+        }
+
+        // 集装箱吞吐量图表
+        const containerCtx = document.getElementById('containerChart').getContext('2d');
+        new Chart(containerCtx, {
+            type: 'line',
+            data: {
+                labels: dynamicData.containerThroughput.years,
+                datasets: [{
+                    label: '中国港口集装箱吞吐量 (亿标准箱)',
+                    data: dynamicData.containerThroughput.data,
+                    borderColor: '#165DFF',
+                    backgroundColor: 'rgba(22, 93, 255, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '中国港口集装箱吞吐量 (2015-2024)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 1.8
+                    }
+                }
+            }
+        });
+
+        // 港口排名图表
+        const portRankingCtx = document.getElementById('portRankingChart').getContext('2d');
+        new Chart(portRankingCtx, {
+            type: 'bar',
+            data: {
+                labels: dynamicData.portRanking.labels,
+                datasets: [{
+                    label: '2024年货物吞吐量 (亿吨)',
+                    data: dynamicData.portRanking.data,
+                    backgroundColor: function(context) {
+                        const index = context.dataIndex;
+                        return index < 3 ? '#165DFF' : '#86909C';
+                    }
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '全球主要港口货物吞吐量排名 (2024)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 商船队规模图表
+        const fleetCtx = document.getElementById('fleetChart').getContext('2d');
+        new Chart(fleetCtx, {
+            type: 'line',
+            data: {
+                labels: dynamicData.fleetSize.years,
+                datasets: [{
+                    label: '中国商船队总吨位 (亿载重吨)',
+                    data: dynamicData.fleetSize.data,
+                    borderColor: '#165DFF',
+                    backgroundColor: 'rgba(22, 93, 255, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '中国商船队规模 (2015-2024)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 1.5
+                    }
+                }
+            }
+        });
+
+        // 海运贸易额图表
+        const tradeCtx = document.getElementById('tradeChart').getContext('2d');
+        new Chart(tradeCtx, {
+            type: 'line',
+            data: {
+                labels: dynamicData.tradeValue.years,
+                datasets: [{
+                    label: '中国海运贸易额 (万亿美元)',
+                    data: dynamicData.tradeValue.data,
+                    borderColor: '#FF7D00',
+                    backgroundColor: 'rgba(255, 125, 0, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '中国海运贸易额 (2015-2024)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 3
+                    }
+                }
+            }
+        });
+
+        // 港口自动化水平图表
+        const automationCtx = document.getElementById('automationChart').getContext('2d');
+        new Chart(automationCtx, {
+            type: 'line',
+            data: {
+                labels: dynamicData.automationLevel.years,
+                datasets: [{
+                    label: '中国自动化码头数量',
+                    data: dynamicData.automationLevel.data,
+                    borderColor: '#00B42A',
+                    backgroundColor: 'rgba(0, 180, 42, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '中国港口自动化水平 (2015-2024)'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // 计数器动画
+        const counterElements = document.querySelectorAll('.counter-value');
+        counterElements.forEach(element => {
+            const count = parseInt(element.getAttribute('data-count'));
+            let currentCount = 0;
+            const duration = 2000; // 2 seconds
+            const frameDuration = 1000 / 60; // Approximately 16.666ms per frame for 60fps
+            const totalFrames = Math.round(duration / frameDuration);
+            const increment = count / totalFrames;
+
+            let frame = 0;
+            const timer = setInterval(() => {
+                currentCount += increment;
+                if (frame >= totalFrames) {
+                    clearInterval(timer);
+                    element.style.setProperty('--count', count);
+                } else {
+                    element.style.setProperty('--count', Math.floor(currentCount));
+                }
+                frame++;
+            }, frameDuration);
+        });
+    </script>
+</body>
+</html>
+        <button class="switch-btn" onclick="switchPage(3)" style="right: 140px;">返回第三页</button>
+        <button class="switch-btn" onclick="switchPage(1)">直接回首页</button>
+    </div>
+    <!-- (第四页结束) -->
+
+    <script>
+        function switchPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`page${pageNumber}`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
