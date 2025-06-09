@@ -350,7 +350,7 @@
                         <div class="timeline">
                             <div class="timeline-item">
                                 <div class="timeline-content">
-                                    <img src="https://www.imagehub.cc/image/81a8f13aa7812f22dce4c0ccf8491b7.IK7HTb"
+                                    <img src="https://s1.imagehub.cc/images/2025/06/09/6a8405e7f4b1e61c76429eb230a469b6.jpg"
                                         alt="秦汉时期开辟通往罗马帝国的海上航线" class="timeline-image">
                                     <div class="timeline-year">公元前2世纪 - 3世纪</div>
                                     <h3>秦汉时期：海上丝绸之路的开端</h3>
@@ -361,7 +361,7 @@
 
                             <div class="timeline-item">
                                 <div class="timeline-content">
-                                    <img src="https://www.imagehub.cc/image/961c3c3c02a7d157356e28634761297.IK7sPR"
+                                    <img src="https://s1.imagehub.cc/images/2025/06/09/a482828c89255d9d9c333294260ccb4c.jpg"
                                         alt="隋唐时期海上丝绸之路贸易兴盛" class="timeline-image">
                                     <div class="timeline-year">6世纪 - 10世纪</div>
                                     <h3>隋唐时期：海上丝绸之路的兴盛</h3>
@@ -372,7 +372,7 @@
 
                             <div class="timeline-item">
                                 <div class="timeline-content">
-                                    <img src="https://www.imagehub.cc/image/d50b39c4476d037490e2bea86a83011.IK7PZg"
+                                    <img src="https://s1.imagehub.cc/images/2025/06/09/604720a08e4d675992deb26da9eb5d78.jpg"
                                         alt="宋元时期指南针应用于海船" class="timeline-image">
                                     <div class="timeline-year">10世纪 - 14世纪</div>
                                     <h3>宋元时期：航海技术的突破</h3>
@@ -383,7 +383,7 @@
 
                             <div class="timeline-item">
                                 <div class="timeline-content">
-                                    <img src="https://www.imagehub.cc/image/47157e81258e158008e676623ac766e.IK7E0z"
+                                    <img src="https://s1.imagehub.cc/images/2025/06/09/1827c4d8d1944df31f52e0bc0dbf41e9.jpg"
                                         alt="郑和下西洋" class="timeline-image">
                                     <div class="timeline-year">1405年 - 1433年</div>
                                     <h3>明朝：郑和下西洋</h3>
@@ -394,7 +394,7 @@
 
                             <div class="timeline-item">
                                 <div class="timeline-content">
-                                    <img src="https://www.imagehub.cc/image/1c7a011f297e87c45bdd659d4822b0d.IK7G8j"
+                                    <img src="https://s1.imagehub.cc/images/2025/06/09/9dda4f6ccd5708dea65c10a15ec4371b.jpg"
                                         alt="2019年交通强国建设纲要发布" class="timeline-image">
                                     <div class="timeline-year">2019年</div>
                                     <h3>2019年：交通强国建设纲要发布</h3>
@@ -405,7 +405,7 @@
 
                             <div class="timeline-item">
                                 <div class="timeline-content">
-                                    <img src="https://www.imagehub.cc/image/45fbf00e356640218dfb1418e7eee40.IK7cIo"
+                                    <img src="https://s1.imagehub.cc/images/2025/06/09/4440c9f55e41be4fa8009e01bde6a128.jpg"
                                         alt="2021年我国首艘自主航行集装箱商船'智飞'号投入运营" class="timeline-image">
                                     <div class="timeline-year">2021年</div>
                                     <h3>2021年：智能航运的突破</h3>
@@ -1046,11 +1046,12 @@
                         }
                     });
                 });
+                let map = null;
 
                 // 初始化地图
                 document.addEventListener('DOMContentLoaded', () => {
                     // 创建地图实例并设置中心坐标和缩放级别
-                    const map = L.map('map', mapOptions).setView([20, 80], 3);
+                    map = L.map('map', mapOptions).setView([20, 80], 3); //const改为map
 
                     // 添加地图图层
                     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -1121,7 +1122,7 @@
                     }).addTo(map);
 
                     // 确保所有标记都在视野内
-                    map.fitBounds(route.getBounds(), { padding: [50, 50] });
+                    map.fitBounds(route.getBounds(), { padding: [50, 50], maxZoom: 4 });
 
                     // 优化地图性能的其他设置
                     map._onResize(); // 强制地图重绘
@@ -2611,6 +2612,13 @@
                 page.classList.remove('active');
             });
             document.getElementById(`page${pageNumber}`).classList.add('active');
+
+            // ▼▼▼ 新增下面的逻辑 ▼▼▼
+            if (pageNumber === 2 && map) {
+                setTimeout(function () {
+                    map.invalidateSize();
+                }, 100); // 使用一个短暂的延时，确保页面已完全渲染
+            }
         }
     </script>
 </body>
