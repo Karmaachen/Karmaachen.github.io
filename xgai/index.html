@@ -168,6 +168,10 @@
                     font-weight: bold;
                 }
 
+                .quiz-buttons-container {
+                    text-align: center;
+                }
+
                 .correct-answer {
                     margin-top: 20px;
                     padding: 15px;
@@ -330,7 +334,10 @@
                         <p>请将事件拖移到此区域进行排序</p>
                     </div>
 
-                    <button id="submit-btn">提交答案</button>
+                    <div class="quiz-buttons-container">
+                        <button id="submit-btn">提交答案</button>
+                        <button id="show-answer-btn" style="margin-left: 15px;">查看答案</button>
+                    </div>
 
                     <div class="result" id="result"></div>
 
@@ -532,7 +539,28 @@
                         document.getElementById('submit-btn').disabled = true;
                         hasSubmitted = true;
                     });
+                    // 查看答案按钮事件
+                    document.getElementById('show-answer-btn').addEventListener('click', function () {
+                        if (hasSubmitted) return;
 
+                        const answerText = "秦汉时期开辟通往罗马帝国的海上航线 → 隋唐时期海上丝绸之路贸易兴盛 → 宋元时期指南针应用于海船，推动远洋航行 → 郑和在明朝永乐至宣德年间七下西洋，远航西太平洋和印度洋 → 2019 年中共中央、国务院印发《交通强国建设纲要》 → 2021 年我国首艘自主航行集装箱商船 '智飞' 号投入运营";
+                        document.getElementById('correct-answer-text').textContent = answerText;
+                        document.getElementById('correct-answer').style.display = 'block';
+
+                        // Disable both buttons
+                        document.getElementById('submit-btn').disabled = true;
+                        this.disabled = true; // 'this' refers to the show-answer-btn
+                        hasSubmitted = true;
+                    });
+
+                    // Also, slightly modify the 'submit-btn' event listener
+                    document.getElementById('submit-btn').addEventListener('click', function () {
+                        // ... (existing logic inside the submit handler) ...
+
+                        // Add this line to disable the "Show Answer" button as well
+                        document.getElementById('show-answer-btn').disabled = true;
+                        hasSubmitted = true;
+                    });
                     // 下一页按钮事件
                     document.getElementById('next-page-btn').addEventListener('click', function () {
                         document.getElementById('quiz-section').style.display = 'none';
@@ -1053,9 +1081,11 @@
                     // 创建地图实例并设置中心坐标和缩放级别
                     map = L.map('map', mapOptions).setView([20, 80], 3); //const改为map
 
-                    // 添加地图图层
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19
+                    // 添加地图图层 (使用高德地图)
+                    L.tileLayer('https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+                        subdomains: ['1', '2', '3', '4'],
+                        maxZoom: 19,
+                        attribution: '&copy; <a href="https://amap.com/">高德地图</a>'
                     }).addTo(map);
 
                     // 添加自定义缩放控件
