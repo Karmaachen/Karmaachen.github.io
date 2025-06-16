@@ -338,7 +338,7 @@
                         <button id="submit-btn">提交答案</button>
                         <button id="show-answer-btn" style="display: block; margin: 10px auto 0;">查看答案</button>
                     </div>
-                    
+
                     <div class="result" id="result"></div>
 
                     <div class="correct-answer" id="correct-answer" style="display: none;">
@@ -878,7 +878,7 @@
             </section>
 
             <!-- 港口详情模态框 -->
-            <div id="port-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+            <div id="port-modal" class="fixed inset-0 z-[9999] flex items-center justify-center hidden">
                 <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" id="modal-backdrop"></div>
                 <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto">
                     <button id="close-modal"
@@ -1007,7 +1007,7 @@
                 function openPortModal(portId) {
                     const port = portData[portId];
                     if (!port) return;
-
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     modalContent.innerHTML = `
                 <div class="relative rounded-xl overflow-hidden shadow-xl mb-6">
                     <img src="${port.image}" alt="${port.name}港口" class="w-full h-auto">
