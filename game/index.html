@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太空射击大战 - Space Shooter</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        #gameContainer {
+            position: relative;
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #00ffff, inset 0 0 20px rgba(0, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        #gameCanvas {
+            display: block;
+            background: linear-gradient(180deg, #000428 0%, #004e92 100%);
+        }
+
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #00ffff;
+            font-size: 18px;
+            text-shadow: 0 0 10px #00ffff;
+            z-index: 10;
+        }
+
+        #gameOver {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ff0040;
+            font-size: 24px;
+            text-shadow: 0 0 20px #ff0040;
+            display: none;
+            z-index: 20;
+        }
+
+        #startScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #00ffff;
+            z-index: 30;
+            overflow: hidden;
+        }
+
+        .sci-fi-bg {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(2px 2px at 20px 30px, #00ffff, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(0, 255, 255, 0.7), transparent),
+                radial-gradient(1px 1px at 90px 40px, #0080ff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(0, 128, 255, 0.8), transparent),
+                radial-gradient(2px 2px at 160px 30px, #00ffff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: float-particles 20s linear infinite;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        @keyframes float-particles {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -100px) rotate(360deg); }
+        }
+
+        .title {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px #00ffff;
+            animation: glow 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            border-radius: 10px;
+            z-index: -1;
+            animation: title-border 3s ease-in-out infinite;
+        }
+
+        @keyframes title-border {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            border: none;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 25px;
+            color: #000;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 30px #00ffff; }
+            to { text-shadow: 0 0 50px #00ffff, 0 0 60px #0080ff; }
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #0080ff;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px #0080ff;
+            letter-spacing: 3px;
+        }
+
+        .mission-text {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 10px;
+            max-width: 400px;
+        }
+
+        .start-btn {
+            font-size: 20px !important;
+            padding: 20px 40px !important;
+            margin: 20px 0 !important;
+            background: linear-gradient(45deg, #ff8000, #ffaa00) !important;
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(255, 170, 0, 0.5);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(255, 170, 0, 0.8);
+                transform: scale(1.05);
+            }
+        }
+
+        .controls {
+            margin-top: 30px;
+            font-size: 14px;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .control-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+
+        .key {
+            background: linear-gradient(45deg, #333, #555);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+            min-width: 40px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .action {
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        .features {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(255, 170, 0, 0.1);
+            border: 1px solid #ffaa00;
+            border-radius: 8px;
+            max-width: 300px;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .feature-list div {
+            color: #ddd;
+            padding: 4px;
+        }
+
+        .upgrade-option {
+            border: 2px solid #00ffff;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            min-width: 150px;
+            background: rgba(0, 255, 255, 0.1);
+            transition: all 0.3s;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        .upgrade-option:hover {
+            background: rgba(0, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="1000" height="1100"></canvas>
+        
+        <div id="ui" style="display: none;">
+            <!-- 血条显示 -->
+            <div style="margin-bottom: 15px;">
+                <div style="font-size: 14px; margin-bottom: 5px;">生命值: <span id="health">100</span>/100</div>
+                <div style="width: 200px; height: 20px; background: #333; border: 2px solid #00ffff; border-radius: 10px; overflow: hidden;">
+                    <div id="healthBar" style="width: 100%; height: 100%; background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00); transition: width 0.3s;"></div>
+                </div>
+            </div>
+            
+            <!-- 护盾条显示 -->
+            <div id="shieldDisplay" style="margin-bottom: 15px; display: none;">
+                <div style="font-size: 14px; margin-bottom: 5px;">护盾: <span id="shieldValue">0</span>/<span id="maxShieldValue">0</span></div>
+                <div style="width: 200px; height: 15px; background: #333; border: 2px solid #00ffff; border-radius: 8px; overflow: hidden;">
+                    <div id="shieldBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #00ffff, #80ffff); transition: width 0.3s;"></div>
+                </div>
+            </div>
+            
+            <div>分数: <span id="score">0</span> / <span id="nextLevel">100</span></div>
+            <div>等级: <span id="level">1</span></div>
+            
+            <!-- 武器槽显示 -->
+            <div style="margin: 15px 0;">
+                <div style="font-size: 14px; margin-bottom: 8px;">武器槽:</div>
+                <div style="display: flex; gap: 10px;">
+                    <!-- 武器槽1 - 普通子弹 -->
+                    <div id="weapon-slot-0" class="weapon-slot" style="width: 60px; height: 65px; border: 2px solid #00ffff; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; background: rgba(0, 255, 255, 0.1); position: relative; padding: 4px;">
+                        <div style="font-size: 20px;">🔫</div>
+                        <div style="font-size: 12px; font-weight: bold;">1</div>
+                        <div style="font-size: 10px; font-weight: bold;">∞</div>
+                    </div>
+                    
+                    <!-- 武器槽2 - 火箭弹 -->
+                    <div id="weapon-slot-1" class="weapon-slot" style="width: 60px; height: 65px; border: 2px solid #666; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; background: rgba(255, 136, 0, 0.1); position: relative; opacity: 0.5; padding: 4px;">
+                        <div style="font-size: 20px;">🚀</div>
+                        <div style="font-size: 12px; font-weight: bold;">2</div>
+                        <div id="rocket-ammo" style="font-size: 10px; font-weight: bold;">0</div>
+                    </div>
+                    
+                    <!-- 武器槽3 - 激光炮 -->
+                    <div id="weapon-slot-2" class="weapon-slot" style="width: 60px; height: 65px; border: 2px solid #666; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; background: rgba(255, 0, 128, 0.1); position: relative; opacity: 0.5; padding: 4px;">
+                        <div style="font-size: 20px;">🔴</div>
+                        <div style="font-size: 12px; font-weight: bold;">3</div>
+                        <div id="laser-ammo" style="font-size: 10px; font-weight: bold;">0</div>
+                    </div>
+                    
+                    <!-- 武器槽4 - 散弹枪 -->
+                    <div id="weapon-slot-3" class="weapon-slot" style="width: 60px; height: 65px; border: 2px solid #666; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; background: rgba(0, 255, 128, 0.1); position: relative; opacity: 0.5; padding: 4px;">
+                        <div style="font-size: 20px;">💥</div>
+                        <div style="font-size: 12px; font-weight: bold;">4</div>
+                        <div id="spread-ammo" style="font-size: 10px; font-weight: bold;">0</div>
+                    </div>
+                </div>
+                <div style="font-size: 12px; margin-top: 8px; opacity: 0.8;">当前: <span id="currentWeaponName">普通子弹</span></div>
+            </div>
+            
+            <!-- 升级属性显示 -->
+            <div id="upgradeStats" style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
+                <div>伤害: +<span id="damageLevel">0</span></div>
+                <div>射速: +<span id="fireRateLevel">0</span></div>
+                <div>速度: +<span id="speedLevel">0</span></div>
+            </div>
+            
+            <div style="margin-top: 10px;">
+                <button class="btn" style="padding: 5px 15px; font-size: 12px;" onclick="togglePause()">暂停</button>
+                <button class="btn" style="padding: 5px 15px; font-size: 12px;" onclick="goToMenu()">主菜单</button>
+            </div>
+            
+            <div style="margin-top: 10px; font-size: 12px;">
+                <div id="bombHint" style="display: none;">按 X 使用炸弹</div>
+                <div id="reviveHint" style="display: none;">自动复活可用</div>
+            </div>
+        </div>
+
+        <div id="startScreen">
+            <!-- 科幻粒子背景 -->
+            <div class="sci-fi-bg"></div>
+            
+            <!-- 主标题 -->
+            <div class="title">太空射击大战</div>
+            <div class="subtitle">SPACE SHOOTER</div>
+            
+            <!-- 副标题 -->
+            <div class="mission-text">
+                <div style="font-size: 20px; margin-bottom: 30px; color: #ffaa00;">🚀 银河系危机警报 🚀</div>
+                <div style="font-size: 16px; margin-bottom: 20px; opacity: 0.9;">外星舰队正在入侵，你是最后的希望！</div>
+            </div>
+            
+            <!-- 开始按钮 -->
+            <button class="btn start-btn" onclick="startGame()">
+                <span style="font-size: 18px;">🎮 开始任务</span>
+            </button>
+            
+            <!-- 操作说明 -->
+            <div class="controls">
+                <div style="font-size: 16px; margin-bottom: 15px; color: #00ffff;">📋 操作说明</div>
+                <div class="control-grid">
+                    <div class="control-item">
+                        <span class="key">WASD</span>
+                        <span class="action">移动飞船</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">空格</span>
+                        <span class="action">射击</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">1-4</span>
+                        <span class="action">切换武器</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">X</span>
+                        <span class="action">使用炸弹</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">ESC</span>
+                        <span class="action">暂停游戏</span>
+                    </div>
+                    <div class="control-item">
+                        <span class="key">Any</span>
+                        <span class="action">消磨时间^ ^</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 游戏特色 -->
+            <!-- <div class="features">
+                <div style="font-size: 14px; margin-bottom: 10px; color: #ffaa00;">⭐ 游戏特色</div>
+                <div class="feature-list">
+                    <div>🔫 多种武器系统</div>
+                    <div>🛡️ 升级强化系统</div>
+                    <div>👾 多样化敌人</div>
+                    <div>🎯 最终Boss挑战</div>
+                </div>
+            </div> -->
+        </div>
+
+        <div id="gameOver">
+            <div style="font-size: 36px; margin-bottom: 20px;">游戏结束</div>
+            <div>最终分数: <span id="finalScore">0</span></div>
+            <div>最高分数: <span id="highScore">0</span></div>
+            <button class="btn" onclick="restartGame()">重新开始</button>
+            <button class="btn" onclick="goToMenu()">返回主菜单</button>
+        </div>
+
+        <div id="pauseScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #00ffff; display: none; z-index: 25;">
+            <div style="font-size: 36px; margin-bottom: 20px;">游戏暂停</div>
+            <button class="btn" onclick="togglePause()">继续游戏</button>
+            <button class="btn" onclick="goToMenu()">返回主菜单</button>
+        </div>
+
+        <div id="upgradeScreen" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #00ffff; display: none; z-index: 30; background: rgba(0, 0, 0, 0.9); padding: 30px; border-radius: 15px; border: 2px solid #00ffff;">
+            <div style="font-size: 32px; margin-bottom: 20px;">🚀 升级选择 🚀</div>
+            <div style="font-size: 18px; margin-bottom: 30px;">选择一项强化：</div>
+            
+            <!-- 动态生成的升级选项容器 -->
+            <div id="upgradeOptions" style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <!-- 升级选项将由JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载游戏脚本 -->
+    <script src="enemies.js"></script>
+    <script src="finalboss.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
